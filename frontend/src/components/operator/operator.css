@@ -1,0 +1,235 @@
+/* styles.css */
+.operatorLoginContainer {
+    max-width: 800px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #f0f8ff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .operatorLoginContainer h2 {
+    text-align: center;
+    color: #003366;
+    margin-bottom: 20px;
+  }
+  
+  .operatorLoginContainer form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .operatorLoginContainer label {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+  
+  .operatorLoginContainer input,
+  .operatorLoginContainer select {
+    padding: 8px;
+    border: 1px solid #0073e6;
+    border-radius: 5px;
+  }
+  
+  .operatorLoginContainer button {
+    background-color: #0073e6;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .operatorLoginContainer button:hover {
+    background-color: #005bb5;
+  }
+  
+  .error {
+    color: #ff0000;
+    text-align: center;
+    margin-top: 10px;
+  }
+  
+  .operatorDashboard {
+    max-width: 60%;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #f0f8ff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .operatorDashboard h2 {
+    text-align: center;
+    color: #003366;
+    margin-bottom: 20px;
+  }
+  
+  .userList {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .userItem {
+    background-color: #ffffff;
+    padding: 15px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .userItem p {
+    margin: 5px 0;
+    color: #003366;
+  }
+  
+  .doneButton {
+    background-color: #f10606d3;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .doneButton:hover {
+    background-color: #820000;
+  }
+
+  /* styles.css */
+.modalOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+  }
+  
+  .modalContent {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+  }
+  
+  .modalContent h3 {
+    margin-bottom: 20px;
+    color: #003366;
+  }
+  
+  .modalButtons {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+  }
+  
+  .confirmButton {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .confirmButton:hover {
+    background-color: #218838;
+  }
+  
+  .cancelButton {
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .cancelButton:hover {
+    background-color: #c82333;
+  }
+  
+  .statusInfo {
+    color: #333; /* Цвет текста */
+    font-size: 24px; /* Размер шрифта */
+    line-height: 24px; /* Межстрочное расстояние */
+    
+    margin-bottom: 10px; /* Отступ снизу */
+    text-align: center; /* Выравнивание текста по центру */
+    /* background-color: #f4f4f4; Цвет фона */
+  }
+
+  
+  .header  {
+    width: 900px;
+    margin: 5px ; /* Центрируем форму на странице */
+    display: flex; /* Используем flex для расположения элементов в ряд */
+    flex-direction: row; /* Направление элементов в ряд */
+    align-items: center; /* Выравниваем элементы по центру по вертикали */
+  }
+  
+  .header label {
+    margin-right: 10px; /* Отступ справа для label */
+    font-weight: bold; /* Жирный шрифт для текста label */
+  }
+  
+  .header select {
+    flex: 1; /* Позволяем select занимать доступное пространство */
+    margin-right: 10px; /* Отступ справа для select */
+    padding: 10px; /* Поля внутри select */
+    border: 1px solid #ccc; /* Граница вокруг select */
+    border-radius: 4px; /* Скруглённые углы */
+    font-size: 16px; /* Размер шрифта */
+  }
+  
+  .updateButton {
+    margin-top: 15px;
+    flex: 0 0 auto; /* Фиксированная ширина для кнопки */
+    padding: 10px; /* Поля внутри кнопки */
+    background-color: #007bff; /* Цвет фона кнопки */
+    color: white; /* Цвет текста кнопки */
+    border: none; /* Убираем границу кнопки */
+    border-radius: 4px; /* Скруглённые углы */
+    font-size: 16px; /* Размер шрифта */
+    cursor: pointer; /* Курсор в виде руки при наведении */
+  }
+  
+  .updateButton:hover {
+    background-color: rgba(5, 5, 138, 0.89);
+  }
+  .restartButton {
+    
+    margin-left: 40%;
+    margin-bottom: 10px;
+    background-color: #dc3545; /* Красный цвет фона */
+    color: white; /* Цвет текста */
+    border: none; /* Убираем границу */
+    padding: 10px 20px; /* Поля внутри кнопки */
+    border-radius: 5px; /* Скруглённые углы */
+    font-size: 16px; /* Размер шрифта */
+    cursor: pointer; /* Курсор в виде руки при наведении */
+    transition: background-color 0.3s; /* Плавное изменение цвета при наведении */
+  }
+  
+  .restartButton:hover {
+    background-color: #c82333; /* Темнее красный цвет при наведении */
+  }
+  
+  

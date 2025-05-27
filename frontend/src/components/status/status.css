@@ -1,0 +1,80 @@
+/* Базовые настройки */
+:root {
+  --primary-blue: #2563eb;
+  --light-blue: #ebf2ff;
+  --text-dark: #1f2937;
+  --text-light: #6b7280;
+  --border-color: #e5e7eb;
+}
+
+.queue-screen {
+  width: 100%;
+  padding: 0;
+  height: 100vh;
+  background-color: #f9fafb;
+  font-family: 'Arial', sans-serif;
+  font-size: 35px;
+}
+
+.queue-list {
+  max-width: 1500px;
+  margin: 0 auto;
+  background: white;
+  border-radius: 0.5rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th {
+  background-color: var(--primary-blue);
+  color: white;
+  padding: 1rem;
+  text-align: left;
+  font-weight: 500;
+  
+}
+
+tr {
+  border-bottom: 1px solid var(--border-color);
+}
+
+tr:nth-child(even) {
+  background-color: var(--light-blue);
+}
+
+td {
+  padding: 1rem;
+  color: var(--text-dark);
+}
+
+.queue-number {
+  font-weight: bold;
+  color: var(--primary-blue);
+  width: 5%;
+}
+
+.user-name {
+  font-weight: 500;
+  width: 45%;
+}
+
+.cabinet-number {
+  width: 25%;
+}
+
+.arrival-time {
+  color: var(--text-light);
+  width: 25%;
+}
+
+.loading-message,
+.empty-message {
+  text-align: center;
+  padding: 2rem;
+  color: var(--text-light);
+}

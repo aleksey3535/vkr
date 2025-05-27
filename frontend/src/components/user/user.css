@@ -1,0 +1,209 @@
+/* styles.css */
+.container {
+  font-family: Arial, sans-serif;
+  max-width: 60%;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f0f8ff; /* Светло-синий фон */
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.headerContainer {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.headerTitle {
+  margin-left:10%;
+  text-align: center;
+  color: #003366; /* Темно-синий */
+  margin-bottom: 20px;
+}
+
+.buttonContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.button {
+  background-color: #0073e6; /* Синий */
+  color: white;
+  border: none;
+  padding: 20px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 20px;
+  transition: background-color 0.3s ease;
+}
+
+.button:hover {
+  background-color: #005bb5; /* Темнее синий при наведении */
+}
+
+.button.active {
+  background-color: #004080; /* Еще темнее для активной кнопки */
+}
+
+.loading {
+  text-align: center;
+  color: #0073e6;
+}
+
+.error {
+  text-align: center;
+  color: #ff0000; /* Красный для ошибок */
+}
+
+.slotsHeader {
+  color: #003366;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.slotList {
+  display: flex;
+  flex-wrap: wrap; /* Перенос на новую строку */
+  gap: 10px; /* Расстояние между слотами */
+  padding: 10px 0; /* Отступы сверху и снизу */
+  list-style: none;
+  margin: 0;
+}
+
+.slotButton {
+  background-color: #ffffff; /* Белый */
+  padding: 10px 20px;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  flex: 1 1 150px; /* Гибкая ширина, минимальная ширина 150px */
+  max-width: 200px; /* Максимальная ширина */
+  white-space: nowrap; /* Текст не переносится на новую строку */
+  cursor: pointer;
+  border: 1px solid #0073e6; /* Синяя рамка */
+  transition: background-color 0.3s ease;
+}
+
+.slotButton:hover {
+  background-color: #e6f2ff; /* Светло-синий при наведении */
+}
+
+.slotButton.busy {
+  pointer-events: none;
+  opacity: 0.5;
+}
+
+.bookingFormContainer {
+  padding: 20px;
+  background-color: #ffffff; /* Белый */
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.bookingForm {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.bookingForm label {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.bookingForm input {
+  padding: 8px;
+  border: 1px solid #0073e6; /* Синяя рамка */
+  border-radius: 5px;
+}
+
+.bookingForm button {
+  background-color: #0073e6; /* Синий */
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+}
+
+.bookingForm button:hover {
+  background-color: #005bb5; /* Темнее синий при наведении */
+}
+
+.bookingResult {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  text-align: center;
+}
+
+.bookingResult button {
+  background-color: #0073e6; /* Синий */
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+}
+
+.bookingResult button:hover {
+  background-color: #005bb5; /* Темнее синий при наведении */
+}
+
+/* styles.css */
+.languageButton {
+  float: right;
+  margin-top: 20px;
+  margin-left: 5px;
+  background-color: #0073e6;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  
+  
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+}
+
+.languageButton:hover {
+  background-color: #005bb5;
+}
+
+.country-image {
+  width: 30px;
+  transform: scale(1.3);
+  margin-top: 4px;
+
+}
+
+.logo {
+  width: 35%;
+  margin: 10px 33%;
+}
+
+.backButton {
+  background-color: #007bff; /* Цвет фона */
+  color: white; /* Цвет текста */
+  border: none; /* Убираем рамку */
+  padding: 10px 20px; /* Отступы внутри кнопки */
+  border-radius: 5px; /* Скругленные углы */
+  cursor: pointer; /* Изменение курсора при наведении */
+  font-size: 16px; /* Размер шрифта */
+  text-decoration: none; /* Убираем подчеркивание */
+}
+.backButton:hover {
+  background-color: #0056b3; /* Изменение цвета фона при наведении */
+}
+.backButtonIcon {
+  transform: scale(2);
+  padding-top:2px;
+}
+
