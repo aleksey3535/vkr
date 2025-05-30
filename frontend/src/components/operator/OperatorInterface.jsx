@@ -8,7 +8,7 @@ import "./operator.css"
 
 const OperatorInterface = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
-  const [users, setUsers] = useState([]); // Данные о пользователях
+  
 
   const apiBase = import.meta.env.VITE_API_BASE
 
@@ -43,55 +43,13 @@ const OperatorInterface = () => {
     }
   })
 
-  const fetchUsers = async (service) => {
-    try {
-      const usersResponse = await axios.get(
-        `${apiBase}/api/admin/${service}/status`,
-      );
-      setUsers(usersResponse.data.data); // Сохраняем данные о пользователях
-    } catch (err) {
-      setUsers([])
-    }
-  };
-
-  const handleUserDone = async (serviceId, userId) => {
-    try {
-      // Отправляем запрос на сервер для отметки пользователя как "обслуженного"
-      await axios.get(
-        `${apiBase}/api/admin/${serviceId}/done/${userId}`
-      );
-
-      // Обновляем список пользователей
-      await fetchUsers(serviceId);
-    } catch (err) {
-      console.error('Ошибка при отметке пользователя:', err);
-    }
-  };
-  
-  const handleClick = async (serviceId) => {
-    try {
-      await axios.get(
-        `${apiBase}/api/admin/restart`
-      )
-      await fetchUsers(serviceId)
-    }
-    catch (err) {
-      console.error("Ошибка обновления" + err)
-    } 
-  }
-
-
-  
 
   return (
     <div>
       {isAuthenticated  ? (
         <>
           <UserList
-            users={users}
-            onUserDone={handleUserDone}
-            handleUser={fetchUsers}
-            handleClick={handleClick}
+         
           />
           
           

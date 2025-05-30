@@ -1,52 +1,89 @@
 import React, { useState } from 'react';
 
-const layouts = {
-  en: [
-    ['1','2','3','4','5','6','7','8','9','0'],
-    ['q','w','e','r','t','y','u','i','o','p'],
-    ['a','s','d','f','g','h','j','k','l'],
-    ['z','x','c','v','b','n','m'],
-    ['Space','Backspace','Lang']
-  ],
-  ru: [
-    ['1','2','3','4','5','6','7','8','9','0'],
-    ['й','ц','у','к','е','н','г','ш','щ','з'],
-    ['ф','ы','в','а','п','р','о','л','д'],
-    ['я','ч','с','м','и','т','ь'],
-    ['Space','Backspace','Lang']
-  ]
-};
+const en = [
+  ['1','2','3','4','5','6','7','8','9','0'],
+  ['q','w','e','r','t','y','u','i','o','p'],
+  ['a','s','d','f','g','h','j','k','l'],
+  ['z','x','c','v','b','n','m'],
+];
 
-export default function VirtualKeyboard({ onInput }) {
+const ru = [
+  ['1','2','3','4','5','6','7','8','9','0'],
+  ['й','ц','у','к','е','н','г','ш','щ','з'],
+  ['ф','ы','в','а','п','р','о','л','д','ж'],
+  ['я','ч','с','м','и','т','ь','б','ю'],
+];
+
+const VirtualKeyboard = ({ value, onChange, onEnter }) => {
   const [lang, setLang] = useState('en');
+  const [capsLock, setCapsLock] = useState(false);
+  const layout = lang === 'en' ? en : ru;
 
-  const handleKeyPress = (key) => {
-    if (key === 'Lang') {
-      setLang(prev => (prev === 'en' ? 'ru' : 'en'));
-    } else if (key === 'Backspace') {
-      onInput(prev => prev.slice(0, -1));
-    } else if (key === 'Space') {
-      onInput(prev => prev + ' ');
-    } else {
-      onInput(prev => prev + key);
-    }
+  const handleKey = (key) => {
+    const char = capsLock ? key.toUpperCase() : key;
+    onChange(value + char);
   };
 
+  const handleBackspace = () => {
+    onChange(value.slice(0, -1));
+  };
+
+  const toggleCapsLock = () => setCapsLock(!capsLock);
+
   return (
-    <div className="mt-2 p-3 border rounded-xl bg-gray-100 w-full max-w-md mx-auto shadow">
-      {layouts[lang].map((row, rowIndex) => (
-        <div key={rowIndex} className="flex justify-center mb-1">
-          {row.map((key) => (
+    <div className="virtualKeyboardContainer">
+      {layout.map((row, rowIndex) => (
+        <div key={rowIndex} className="keyboardRow">
+          {row.map((key, i) => (
             <button
-              key={key}
-              onClick={() => handleKeyPress(key)}
-              className="mx-1 px-3 py-2 text-sm rounded bg-white shadow hover:bg-gray-200"
+              key={i}
+              className="keyboardKey"
+              onClick={() => handleKey(key)}
+              aria-label={`Key ${capsLock ? key.toUpperCase() : key}`}
             >
-              {key}
+              {capsLock ? key.toUpperCase() : key}
             </button>
           ))}
         </div>
       ))}
+
+      <div className="keyboardRow specialKeysRow">
+        <button
+          className={`keyboardKey capsLockKey ${capsLock ? 'active' : ''}`}
+          onClick={toggleCapsLock}
+          aria-pressed={capsLock}
+          aria-label="Caps Lock"
+        >
+          Caps
+        </button>
+
+        <button
+          className="keyboardKey langKey"
+          onClick={() => setLang(lang === 'en' ? 'ru' : 'en')}
+          aria-label="Toggle Language"
+        >
+          {lang.toUpperCase()}
+        </button>
+
+        <button
+          className="keyboardKey enterKey"
+          onClick={onEnter}
+          aria-label="Enter"
+        >
+          {lang === 'ru' ? 'Ввод' : 'Enter'}
+
+        </button>
+
+        <button
+          className="keyboardKey backspaceKey"
+          onClick={handleBackspace}
+          aria-label="Backspace"
+        >
+          ←
+        </button>
+      </div>
     </div>
   );
-}
+};
+
+export default VirtualKeyboard;

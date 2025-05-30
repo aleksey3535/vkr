@@ -4,24 +4,24 @@ import './status.css';
 
 const StatusInterface = () => {
   const [queue, setQueue] = useState([]);
-  const [loading, setLoading] = useState(true);
 
   const apiBase = import.meta.env.VITE_API_BASE
 
   const fetchQueue = async () => {
+    
     try {
       const response = await axios.get(`${apiBase}/api/admin/status`);
-      setQueue(response.data.data);
+      setQueue(Array.isArray(response.data.data) ? response.data.data : []);
+
     } catch (error) {
       console.error('Ошибка загрузки очереди:', error);
-    } finally {
-      setLoading(false);
-    }
+      setQueue([]); // Очистка очереди в случае ошибки
+    } 
   };
 
   useEffect(() => {
     fetchQueue();
-    const interval = setInterval(fetchQueue, 60000); // Обновление каждую минуту
+    const interval = setInterval(fetchQueue, 10000); // Обновление каждую минуту
     return () => clearInterval(interval);
   }, []);
 
@@ -29,9 +29,7 @@ const StatusInterface = () => {
   return (
     <div className="queue-screen">
       <div className="queue-list">
-        {loading ? (
-          <p className="loading-message">Загрузка данных...</p>
-        ) : queue.length > 0 ? (
+        {queue.length > 0 ? (
           <table>
             <thead>
               <tr>

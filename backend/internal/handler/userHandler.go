@@ -8,8 +8,8 @@ import (
 	"net/http"
 	"queueAppV2/internal/models"
 	"queueAppV2/internal/repository"
-	// "queueAppV2/internal/repository/postgres/migrations"
-	// "time"
+	"queueAppV2/internal/repository/postgres/migrations"
+	"time"
 
 	"github.com/gorilla/mux"
 )
@@ -41,23 +41,23 @@ func (uh *UserHandler) FreeSlotsHandler(w http.ResponseWriter, r *http.Request) 
 	const op = "handler.userHandler.freeSlotsHandler"
 	log := uh.log.With("op", op)
 
-	// nowWithoutLoc := time.Now()
+	nowWithoutLoc := time.Now()
 
-	// loc, err := time.LoadLocation("Europe/Moscow")
-	// if err != nil {
-	// 	log.Error("error loading location: " + err.Error())
-	// }
-	// now := nowWithoutLoc.In(loc)
-	// targetTimes := migrations.InitCheckDate(now)
-	// for targetTime, timeSlotIdList := range targetTimes {
-	// 	if now.After(targetTime) {
-	// 		for _, timeSlotID := range timeSlotIdList {
-	// 			if err := uh.repo.UpdateTimeSlot(timeSlotID); err != nil {
-	// 				log.Error("occurred with uh.repo.UpdateTimeSlot " + err.Error())
-	// 			}
-	// 		}
-	// 	}
-	// }
+	loc, err := time.LoadLocation("Europe/Moscow")
+	if err != nil {
+		log.Error("error loading location: " + err.Error())
+	}
+	now := nowWithoutLoc.In(loc)
+	targetTimes := migrations.InitCheckDate(now)
+	for targetTime, timeSlotIdList := range targetTimes {
+		if now.After(targetTime) {
+			for _, timeSlotID := range timeSlotIdList {
+				if err := uh.repo.UpdateTimeSlot(timeSlotID); err != nil {
+					log.Error("occurred with uh.repo.UpdateTimeSlot " + err.Error())
+				}
+			}
+		}
+	}
 
 	idStr := mux.Vars(r)["id"]
 	id, errorMessage, ok := validateServiceID(idStr)

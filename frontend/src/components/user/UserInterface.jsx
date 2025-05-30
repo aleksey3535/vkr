@@ -59,30 +59,32 @@ const UserInterface = () => {
   };
 
   return (
-    <div className="container">
-      <button className='languageButton' onClick={() => setLanguage('ru')}> <img className="country-image" src={flagRU}/></button>
-      <button className='languageButton' onClick={() => setLanguage('en')}> <img className='country-image' src={flagEN}/></button>
-      <h1 className="headerTitle">{translations[language].title}</h1>
-      {step === 'service' && <Service onServiceClick={handleServiceClick} language={language}/>}
-      {step === 'slot' && <Slots
-        service={activeService}
-        slots={slots}
-        loading={loading}
-        error={error}
-        onSlotClick={handleSlotClick}
-        onBackClick={handleBackClick}
-        language={language}
-      /> }
-      {step === 'form' && <BookingForm
+    <div className='userInterface'>
+      <div className="container">
+        <button className='languageButton' onClick={() => setLanguage('ru')}> <img className="country-image" src={flagRU}/></button>
+        <button className='languageButton' onClick={() => setLanguage('en')}> <img className='country-image' src={flagEN}/></button>
+        <h1 className="headerTitle">{translations[language].title}</h1>
+        {step === 'service' && <Service onServiceClick={handleServiceClick} language={language}/>}
+        {step === 'slot' && <Slots
           service={activeService}
-          slot={selectedSlot}
-          serviceId={activeService}
-          onClose={handleClose}
+          slots={slots}
+          loading={loading}
+          error={error}
+          onSlotClick={handleSlotClick}
           onBackClick={handleBackClick}
           language={language}
-        />}
+        /> }
+        {step === 'form' && <BookingForm
+            service={activeService}
+            slot={selectedSlot}
+            serviceId={activeService}
+            onClose={handleClose}
+            onBackClick={handleBackClick}
+            language={language}
+          />}
 
-      <img className="logo" src={logo}  />
+        <img className="logo" src={logo}  />
+      </div>
     </div>
   );
 };

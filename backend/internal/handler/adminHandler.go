@@ -79,8 +79,14 @@ func (ah *AdminHandler) StatusHandler(w http.ResponseWriter, r *http.Request) {
 	data, err := ah.repo.GetAppointments(serviceID)
 	if err != nil {
 		if errors.Is(err, repository.ErrEmptyAppointments) {
-			message := ErrorWrapper(err)
-			w.WriteHeader(http.StatusNotFound)
+			dataMessage := DataForStatus{Data: data}
+			message, err := json.Marshal(dataMessage)
+			if err != nil {
+				InternalErrorHandler(w)
+				log.Error("occurred with marshalling json " + err.Error())
+				return
+			}
+			w.WriteHeader(http.StatusOK)
 			w.Write(message)
 			return
 		}
